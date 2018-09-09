@@ -9,7 +9,7 @@ public abstract class AbstractResolver<T> {
     public abstract T get(int id);
     public abstract List<T> get();
     public abstract boolean delete(int id) throws SQLException;
-    public abstract boolean insert(Map<String, String> parms);
-    public abstract boolean update(int id, Map<String, String> parms);
+    public abstract boolean insert(Map<String, String> parms) throws SQLException;
+    public abstract boolean update(int id, Map<String, String> parms) throws SQLException;
 
 }

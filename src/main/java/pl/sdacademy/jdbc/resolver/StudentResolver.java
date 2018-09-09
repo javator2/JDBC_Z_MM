@@ -1,6 +1,5 @@
 package pl.sdacademy.jdbc.resolver;
 
-import com.sun.corba.se.spi.monitoring.StatisticMonitoredAttribute;
 import pl.sdacademy.jdbc.config.Database;
 import pl.sdacademy.jdbc.model.Student;
 
@@ -56,12 +55,18 @@ public class StudentResolver extends AbstractResolver<Student> {
     }
 
     @Override
-    public boolean insert(Map<String, String> parms) {
-        return false;
+    public boolean insert(Map<String, String> parms) throws SQLException {
+        String sql = "insert into student(firstname, lastname) values ('" + parms.get("firstname") + "', '" + parms.get("lastname") + "')";
+        Statement statement = connection.createStatement();
+        return statement.execute(sql);
+
     }
 
     @Override
-    public boolean update(int id, Map<String, String> parms) {
-        return false;
+    public boolean update(int id, Map<String, String> parms) throws SQLException {
+        String sql = "update student set firstname = '" + parms.get("firstname") + "', lastname = '" + parms.get("lastname") + "' where id = " + id;
+        Statement statement = connection.createStatement();
+        return statement.execute(sql);
+
     }
 }
